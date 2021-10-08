@@ -1,0 +1,13 @@
+<h1>Logs</h1>
+<div id="logs"></div>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io();
+    socket.on('conn', (data) => console.log(data));
+    socket.on('logData', (data) => {
+        let div = document.getElementById('logs');
+        div.innerHTML += '<br>' + data;
+        console.log(data)
+    })
+    socket.emit('random', 'Random event');
+</script>
